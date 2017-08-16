@@ -4,6 +4,10 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+//adding cors module
+var cors = require('cors');
+//adding useragnt module
+var useragent = require('express-useragent');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -21,6 +25,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+//using cors
+app.use(cors());
+//using user agent
+app.use(useragent.express());
 
 app.use('/', index);
 app.use('/users', users);
